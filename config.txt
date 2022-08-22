@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+#
+# Created on Mon Aug 15 2022
+#
+# A config file that sets up how the program should run
+#
+# @author: Keanan Scarbro
+#
+
+{
+'NAME'          : 'Test',       # Name of simulation
+'RESTART'       : 'none',         # Currently not functional      
+'OUTPUT'        : 365,          # Output data files every how many days
+'DUMP'          : 5 * 365,          # Output dump files every how many days
+'DURATION'      : 5 * 365,      # Length of the simulation (in years)
+'DIMENSION'     : '2D',         # 1D, 2D, or 3D (currently not functional)
+'MODE'          : 3             # 1: only plots, 2: only sim, 3: plots and sim
+}
