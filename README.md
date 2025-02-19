@@ -24,6 +24,7 @@ The timestep is set to 1 day (60 * 60 * 24 seconds), so the duration is set in d
 ___
 
 ## TODO
+- Fix this README. It doesn't even detail how to use the damn program.
 - Overhaul the way the gravity function works. Currently, it calculates the gravity on a planet by cycling through each of the other planets and calculating the force vector. This function is then called for each planet. Due to Newton's 
 third law, this is unnecessary. It would be better to calculate the force on one planet due to another, then automatically add equal and opposite this force to the other planet. This would split the computational time approximately in half.
 Plus, it would solve issues where the force on planet A due to planet B is easy to calculate, but the force on planet B by planet A isn't. With Newton's third law, we need not even calculate the force on planet B by planet A directly;
