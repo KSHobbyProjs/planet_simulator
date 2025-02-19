@@ -10,15 +10,16 @@ ___
 
 This game is a mock universe sandbox.
 
-It uses Newtonian gravity to simulate the behavior of the planets. The default setup is the solar system, but the game allows you to make more planets upon clicking
+It uses Newtonian gravity to simulate the behavior of the planets. There are three modes. In Mode 1, a simulation is run with initial planet information that you provide. This data is output in plots and data files. Mode 2 is an interactive game. Here, one can create new planets and The default setup is the solar system, but the game allows you to make more planets upon clicking. 
 ___
 ## HOW TO DOWNLOAD:
 
-Download with gut via "git clone -h ..."
+Download with gut via "git clone https://github.com/KSHobbyProjs/planet_simulator.git"
 
 ___
 ## HOW TO USE:
 Linux: "python main.py."
+
 Windows: Use whichever Python interpreter you wish to run main.py 
 
 ___
@@ -44,3 +45,5 @@ Email: scarbro.kms1@gmail.com
 
 It's August 2022, and I'm currently a physics major going into my senior year at North Carolina State University. I'm applying for graduate school in physics, and I plan to conduct research on quantum gravity (childish ambition) 
 upon receiving my P.H.D.
+
+Update: It's February 2025. I'm a physics major in my second year in graduate school at North Carolina State University. I plan to conduct research into unification theories and BSM.
