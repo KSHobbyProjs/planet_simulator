@@ -18,7 +18,8 @@ Download with gut via "git clone -h ..."
 
 ___
 ## HOW TO USE:
-Run main.py. There are three modes. 
+Linux: "python main.py."
+Windows: Use whichever Python interpreter you wish to run main.py 
 
 ___
 IMPORTANT: <br>
@@ -29,11 +30,10 @@ ___
 
 ## TODO
 - Fix this README. It doesn't even detail how to use the damn program.
-- Overhaul the way the gravity function works. Due to treating each planet as an object and pygams reqs, it was easier for me calculate the force on wach plane individually. this isnt necessary, so adjust the function so that it calculates the force on one then apllies this to the other. I beleive I've done thus, but i keep thus here for posterity. 
+- ~~Overhaul the way the gravity function works. Due to treating each planet as an object and pygame requirements, it was easier for me to calculate the force on each planet individually. It'd be better to calculate the force on a planet due to all of the other planets, then update the force that the other planets feel. I beleive I've done thus, but I keep this here for posterity.~~ I looked into it. I didn't overhaul the gravity. I remember now that I found out that this is much more intense a task than I thought it would be. Since, at each clock cycle, all planets are looped over, and within the planet class, the force is calculated by once again looping over all planets, I'd need to transfer the history force data to each planet and keep this in that planet's history so that it's still there when it is its turn in both loops. This is just now how i have this set up. It's possible, but tedious, and it would hinder readability (it also may not be nearly as computationally efficient as I think. Theoretically, it'd cut the number of operations in half, but given all the extra steps, that might not be much faster. Given that this is more a game than a true simulation environment, I probably won't end up doing this, but I keep it here as a strikethrough for posterity.
 - Add right click mechanic to control other attributes of the planets
 
-- Add future path of planet [once the program detects the mouse being dragged, store the current x and v history, call the move method numerous times (within the main loop), draw the lines representing the planet in questions future 
-path; once the mouse is let go, revert back to the stored x and v values, and let the planet go. It should follow the future path]
+- Add future path of planet [once the program detects the mouse being dragged, store the current x and v history, call the move method numerous times (within the main loop), draw the lines representing the planet in questions future path; once the mouse is let go, revert back to the stored x and v values, and let the planet go. It should follow the future path]
 
 - Move to 3D
 ___
