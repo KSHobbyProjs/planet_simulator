@@ -7,18 +7,15 @@ Date: 8/16/2022
 
 ___
 ## DESCRIPTION
-
 This game is a mock universe sandbox.
 
 It uses Newtonian gravity to simulate the behavior of the planets. There are three modes. In Mode 1, a simulation is run with initial planet information that you provide. This data is output in plots and data files. Mode 2 is an interactive game. Here, one can create new planets and can . Mode 3 is a combination of Mode 1 and Mode 2. It outputs data based on what you did during the live simulation.
 ___
 ## HOW TO DOWNLOAD:
-
 Download with git via "git clone https://github.com/KSHobbyProjs/planet_simulator.git"
 
 ___
 ## DEPENDENCIES:
-
 Python
   - matplotlib (download in your local Python environment with pip via "pip install matplotlib")
   - pygame     (download in your local Python environment with pip via "pip install pygame")
