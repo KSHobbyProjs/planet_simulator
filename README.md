@@ -14,13 +14,21 @@ It uses Newtonian gravity to simulate the behavior of the planets. There are thr
 ___
 ## HOW TO DOWNLOAD:
 
-Download with gut via "git clone https://github.com/KSHobbyProjs/planet_simulator.git"
+Download with git via "git clone https://github.com/KSHobbyProjs/planet_simulator.git"
 
 ___
-## HOW TO USE:
-Linux: "python main.py."
+## DEPENDENCIES:
 
-Windows: Use whichever Python interpreter you wish to run main.py 
+Python
+  - matplotlib (download in your local Python environment with pip via "pip install matplotlib")
+  - pygame     (download in your local Python environment with pip via "pip install pygame")
+  - pandas     (download in your local Python environment with pip via "pip install pandas")
+
+## HOW TO USE:
+
+Running main.py 
+
+
 
 ___
 IMPORTANT: <br>
@@ -46,4 +54,4 @@ Email: scarbro.kms1@gmail.com
 It's August 2022, and I'm currently a physics major going into my senior year at North Carolina State University. I'm applying for graduate school in physics, and I plan to conduct research on quantum gravity (childish ambition) 
 upon receiving my P.H.D.
 
-Update: It's February 2025. I'm a physics major in my second year in graduate school at North Carolina State University. I plan to conduct research into unification theories and BSM.
+Update: It's February 2025. I'm a physics major in my second year in graduate school at North Carolina State University. I plan to conduct research on unification theories and BSM.
