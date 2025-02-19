@@ -29,11 +29,7 @@ ___
 
 ## TODO
 - Fix this README. It doesn't even detail how to use the damn program.
-- Overhaul the way the gravity function works. Currently, it calculates the gravity on a planet by cycling through each of the other planets and calculating the force vector. This function is then called for each planet. Due to Newton's 
-third law, this is unnecessary. It would be better to calculate the force on one planet due to another, then automatically add equal and opposite this force to the other planet. This would split the computational time approximately in half.
-Plus, it would solve issues where the force on planet A due to planet B is easy to calculate, but the force on planet B by planet A isn't. With Newton's third law, we need not even calculate the force on planet B by planet A directly;
-we just use what we calculated earlier.
-
+- Overhaul the way the gravity function works. Due to treating each planet as an object and pygams reqs, it was easier for me calculate the force on wach plane individually. this isnt necessary, so adjust the function so that it calculates the force on one then apllies this to the other. I beleive I've done thus, but i keep thus here for posterity. 
 - Add right click mechanic to control other attributes of the planets
 
 - Add future path of planet [once the program detects the mouse being dragged, store the current x and v history, call the move method numerous times (within the main loop), draw the lines representing the planet in questions future 
