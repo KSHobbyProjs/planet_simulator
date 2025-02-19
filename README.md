@@ -22,21 +22,26 @@ Python
   - pandas     (download in your local Python environment with pip via "pip install pandas")
 
 ## HOW TO USE:
+The program is configured with 'config.txt', and the program is run with 'main.py'. Data on planet positions and velocities is printed in the form of '.dat' files into an 'output' directory. Restart files are printed as '.pkl' files into the 'restart' directory; these files allow you to start a new simulation from a save point of a previous simulation. 
 
 ### config.txt
 The config.txt file determines how the program runs. This needs to be configured before running the program. The config.txt file is setup in the following way:
   - 'NAME'      : '[the name of your simulation]',
-  - 'RESTART'   : [
+  - 'RESTART'   : [which dump file, if any, should the program grab its initial data from]
+  - 'OUTPUT'    : [how often data is output; e.g. 'OUTPUT' : 300 would output data files every 300 days]
+  - 'DUMP'      : [how often the simulation is saved; e.g. 'DUMP' : 300 would dump simulation data ever 300 days] 
+  - 'DURATION'  : [the length of the simulation in days]
+  - 'DIMENSION' : [2D or 3D]
+  - 'MODE'      : [1: data output only, 2: live simulation only, or 3: data output and live simulation] 
 
 ### main.py
-After configuring the config.txt file, run the program by executing main.py with whichever Python interpreter you choose.
+After configuring the config.txt file, run the program by executing main.py with whichever Python interpreter you choose. The 'output' directory will contain the data output from the simulation, and the 'restart' directory will contain all dump files.
 
 ### output
-If you chose Mode 1 or Mode 3, the data output files will be printed into the output directory. The data files have the form "NAME_DUMPNUM_PLANETNAME.dat", where NAME is the name of your simulation as set in the config.txt file, DUMPNUM is the number representing which dump cycle the data corresponds to, and PLANETNAME is the name of the planet that the data corresponds to. The .dat files are structured in columns. The first column gives the number of clock cycles that have passed; the second column gives the time at each cycle; the next three columns give the x, y, and z positions of the planet, respectively; the sixth column gives the radial distance from the origin; the seventh column gives the radial distance of the planet from the origin projected onto the x-y plane; and the last column gives the speed of the planet. All data uses meters for position and seconds for time.
-
+If you chose Mode 1 or Mode 3, the data output files will be printed into the 'output' directory. The data files have the form "NAME_DUMPNUM_PLANETNAME.dat", where NAME is the name of your simulation as set in the config.txt file, DUMPNUM is the number representing which dump cycle the data corresponds to, and PLANETNAME is the name of the planet that the data corresponds to. The .dat files are structured in columns. The first column gives the number of clock cycles that have passed; the second column gives the time at each cycle; the next three columns give the x, y, and z positions of the planet, respectively; the sixth column gives the planet's radial distance from the origin; the seventh column gives the planet's radial distance from the origin projected onto the x-y plane; and the last column gives the speed of the planet. All data uses meters for position and seconds for time.
 
 ### restart
-
+If Mode 1 or Mode 3 were chosen, and 'DUMP' in the config.txt file was given a , the dump files will be stored in the 'restart' directory. These files provide a 
 
 
 
@@ -50,14 +55,14 @@ ___
 
 ## TODO
 - Update README
-- ~~Overhaul the way the gravity function works. Due to treating each planet as an object and pygame requirements, it was easier for me to calculate the force on each planet individually. It'd be better to calculate the force on a planet due to all of the other planets, then update the force that the other planets feel. I beleive I've done thus, but I keep this here for posterity.~~ I looked into it. I didn't overhaul the gravity. I remember now that I found out that this is much more intense a task than I thought it would be. Since, at each clock cycle, all planets are looped over, and within the planet class, the force is calculated by once again looping over all planets, I'd need to transfer the history force data to each planet and keep this in that planet's history so that it's still there when it is its turn in both loops. This is just now how i have this set up. It's possible, but tedious, and it would hinder readability (it also may not be nearly as computationally efficient as I think. Theoretically, it'd cut the number of operations in half, but given all the extra steps, that might not be much faster. Given that this is more a game than a true simulation environment, I probably won't end up doing this, but I keep it here as a strikethrough for posterity.
-- Add right click mechanic to control other attributes of the planets
-- Make the restart functionality functional
-- right now, the data being output prints r, the radial distance from the origin. I'm not sure why I did this; it's not particularly useful. A more useful quantity would be the radial distance from the COM.
-
-- Add future path of planet [once the program detects the mouse being dragged, store the current x and v history, call the move method numerous times (within the main loop), draw the lines representing the planet in questions future path; once the mouse is let go, revert back to the stored x and v values, and let the planet go. It should follow the future path]
-
-- Move to 3D
+- Fix dump and restart capabilities (and use pickle instead of .csv)
+- Make it easier to configure initial setups. Right now, users have to go into the planet module and either overwrite the 'load_solar_system()' function, or create a new function which would then need to be called in 'main()'.
+- Add right click mechanic to control other attributes of the planets in the form of a drop-down menu
+- Output more statistics. Output the motion of and about the COM and maybe some measure of the overall stability of the system
+- Add future path of planet
+  - Once the program detects the mouse being dragged, store the current x and v history, call the move method numerous times (within the main loop), draw the lines representing the planet's future path and store this path; once the mouse is let go, revert back to the stored x and v values.
+- Add 3D functionality
+- ~~Overhaul the way the gravity function works. Due to treating each planet as an object and pygame requirements, it was easier for me to calculate the force on each planet individually. It'd be better to calculate the force on a planet due to all of the other planets, then update the force that the other planets feel. I beleive I've done thus, but I keep this here for posterity.~~ I looked into it. I didn't overhaul the gravity. I remember now that I found out that this is much more intense a task than I thought it would be. Since, at each clock cycle, all planets are looped over, and within the planet class, the force is calculated by once again looping over all planets, I'd need to transfer the history of the force data to each planet and keep this in that planet's history so that it's still there when it is its turn in both loops. This is just not how i have this set up. It's possible, but tedious, and it would hinder readability (it also may not be nearly as computationally efficient as I think. Theoretically, it'd cut the number of operations in half, but given all the extra steps, that might not be much faster. Given that this is more a game than a true simulation environment, I probably won't end up doing this, but I keep it here as a strikethrough for posterity.
 ___
 
 ## AUTHOR
