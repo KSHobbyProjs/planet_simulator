@@ -11,6 +11,13 @@ ___
 This game is a mock universe sandbox.
 
 It uses Newtonian gravity to simulate the behavior of the planets. The default setup is the solar system, but the game allows you to make more planets upon clicking
+___
+## HOW TO DOWNLOAD:
+
+Download with gut via git clone 
+
+___
+## HOW TO USE:
 
 IMPORTANT: <br>
 The game uses real values for the position, velocity, and radius of each planet to calculate the gravity. However, in the live simulation, the position is scaled (by 100 / AU), so that the orbits can fit in the window. 
