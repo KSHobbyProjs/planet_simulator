@@ -48,15 +48,19 @@ If Mode 1 or Mode 3 were chosen, dump files will be stored in the `restart` dire
 
 ___
 IMPORTANT: <br>
-The game uses real values for the position, velocity, and radius of each planet to calculate the gravity. However, in the live simulation, the position is scaled (by 100 / AU), so that the orbits can fit in the window. The radii of the planets displayed are calculated using an arbitrary formula (_rad_scaling in planet.Planet). This means that the radii of the planets displayed is no where near the true radius (based on the 100 / AU position scaling). The true (position-scaled) radii are actually incredibly small (less than one pixel). This makes sense; the radii of the planets are infinitesmal compared to the orbital distance, afterall. The collision detection is set to trip when a planet enters the fake-radius set by the _rad_scaling function. This can be altered to trip when a planets is within the true (position-scaling) radius by altering the _check_collision method in the planet.Planet class (not recommended). But, this means that the planets will almost never trip the detection function. Instead, the _check_collision function should be altered, so that the collision is tripped at a smaller radius, or the _rad_scaling function should be altered (this affects the displayed size of the planets). Also, a planet is deleted once it leaves the current pygame window, but this can also be changed within _check_collision.
+The game uses real values for the position, velocity, and radius of each planet to calculate the gravity. However, in the live simulation, orbital distances are scaled by 100 / AU, so that the orbits can fit in the window. The scale can be changed at the header of the `Planet` class found within `planet.py`. The radii of the planets displayed are not scaled to 100 / AU (if they were, the planets would be less than a pixel wide); instead, the radii are scaled according to an arbitrary function `_rad_scaling` found in the `Planet` class of the `planet.py` module. The collision detection is set to trip when a planet enters the scaled-radius set by the _rad_scaling function. This can be changed with `_check_collision` found within the `Planet` class of the `planet.py` module. A planet is deleted once it leaves the current pygame window; this can also be changed with `_check_collision`.
 
-The timestep is set to 1 day (60 * 60 * 24 seconds), so the duration is set in days (for _ in range(duration): move(dt)). This means that the restart dump and output dump values in the config file correspond to days as well.
+The timestep is set to 1 day (60 * 60 * 24 seconds). This can be changed at the bottom of `constants.py`. The 'DURATION', 'RESTART' and 'OUTPUT' fields in the `config.txt` file are in units determined by the timestep. 
+
+The width and height of the screen for the live simulation can be altered in `constants.py`.
+
+To change the initial planetary setup, change the function `load_solar_system` found at the bottom of the `planet.py` module. Alternatively, add a new function at the bottom of the `planet.py` module, and call this function at the beginning of the main method in `main.py`.
 ___
 
 ## TODO
 - Update README
 - Fix dump and restart capabilities (and use pickle instead of .csv)
-- Make it easier to configure initial setups. Right now, users have to go into the planet module and either overwrite the 'load_solar_system()' function, or create a new function which would then need to be called in 'main()'.
+- Make it easier to configure initial setups. Right now, users have to go into the planet.py module and either overwrite the 'load_solar_system()' function, or create a new function which would then need to be called in 'main()'.
 - Add right click mechanic to control other attributes of the planets in the form of a drop-down menu
 - Output more statistics. Output the motion of and about the COM and maybe some measure of the overall stability of the system. Right now, the simulation plots many pictures once the simulation is complete, but it doesn't save them. Fix that.
 - Add future path of planet
