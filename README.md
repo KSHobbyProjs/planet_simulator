@@ -4,12 +4,13 @@ Developers: Keanan Scarbro
 
 Version: Alpha 1.0 <br>
 Date: 8/16/2022
+Updated Date: 2/19/2025
 
 ___
 ## DESCRIPTION
 This game is a mock universe sandbox.
 
-It uses Newtonian gravity to simulate the behavior of the planets. There are three modes. In Mode 1, a simulation is run with initial planet information that you provide. This data is output in plots and data files. Mode 2 is an interactive game. Here, one can create new planets and can . Mode 3 is a combination of Mode 1 and Mode 2. It outputs data based on what you did during the live simulation.
+It uses Newtonian gravity to simulate the behavior of the planets. There are three modes. In Mode 1, a simulation of the N-body graviation is run with initial planet information that you provide. Data on the positions and velocities of the planets over time is output in the form of plots and data files. Mode 2 is an interactive game. Here, one can create new planets and watch them interact. Mode 3 is a combination of Mode 1 and Mode 2. In Mode 3, the program outputs position and velocity data based on what you did during the live simulation.
 ___
 ## HOW TO DOWNLOAD:
 Download with git via "git clone https://github.com/KSHobbyProjs/planet_simulator.git"
@@ -38,7 +39,9 @@ The config.txt file determines how the program runs. This needs to be configured
 After configuring the config.txt file, run the program by executing main.py with whichever Python interpreter you choose. The 'output' directory will contain the data output from the simulation, and the 'restart' directory will contain all dump files.
 
 ### output
-If you chose Mode 1 or Mode 3, the data output files will be printed into the 'output' directory. The data files have the form "NAME_DUMPNUM_PLANETNAME.dat", where NAME is the name of your simulation as set in the config.txt file, DUMPNUM is the number representing which dump cycle the data corresponds to, and PLANETNAME is the name of the planet that the data corresponds to. The .dat files are structured in columns. The first column gives the number of clock cycles that have passed; the second column gives the time at each cycle; the next three columns give the x, y, and z positions of the planet, respectively; the sixth column gives the planet's radial distance from the origin; the seventh column gives the planet's radial distance from the origin projected onto the x-y plane; and the last column gives the speed of the planet. All data uses meters for position and seconds for time.
+If you chose Mode 1 or Mode 3, the data output files will be printed into the 'output' directory. The data files have the form 'NAME_DUMPNUM_PLANETNAME.dat', where NAME is the name of your simulation as set in the config.txt file, DUMPNUM is the number representing which dump cycle the data corresponds to, and PLANETNAME is the name of the planet that the data corresponds to. The .dat files are structured in columns. The first column gives the number of clock cycles that have passed; the second column gives the time at each cycle; the next three columns give the x, y, and z positions of the planet, respectively; the sixth column gives the planet's radial distance from the origin; the seventh column gives the planet's radial distance from the origin projected onto the x-y plane; and the last column gives the speed of the planet. All data uses meters for position and seconds for time.
+
+The program also prints a 'NAME.hst' file in the 'output' directory that includes simulation diagnostic information like when the simulation was started, when output files were printed, when dump files were printed, and when the simulation finished. 
 
 ### restart
 If Mode 1 or Mode 3 were chosen, and 'DUMP' in the config.txt file was given a , the dump files will be stored in the 'restart' directory. These files provide a 
@@ -58,7 +61,7 @@ ___
 - Fix dump and restart capabilities (and use pickle instead of .csv)
 - Make it easier to configure initial setups. Right now, users have to go into the planet module and either overwrite the 'load_solar_system()' function, or create a new function which would then need to be called in 'main()'.
 - Add right click mechanic to control other attributes of the planets in the form of a drop-down menu
-- Output more statistics. Output the motion of and about the COM and maybe some measure of the overall stability of the system
+- Output more statistics. Output the motion of and about the COM and maybe some measure of the overall stability of the system. Right now, the simulation plots many pictures once the simulation is complete, but it doesn't save them. Fix that.
 - Add future path of planet
   - Once the program detects the mouse being dragged, store the current x and v history, call the move method numerous times (within the main loop), draw the lines representing the planet's future path and store this path; once the mouse is let go, revert back to the stored x and v values.
 - Add 3D functionality
