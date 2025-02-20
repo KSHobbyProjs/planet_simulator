@@ -58,7 +58,6 @@ To change the initial planetary setup, change the function `load_solar_system` f
 ___
 
 ## TODO
-- Update README
 - Fix dump and restart capabilities (and use pickle instead of .csv)
 - Make it easier to configure initial setups. Right now, users have to go into the planet.py module and either overwrite the 'load_solar_system()' function, or create a new function which would then need to be called in 'main()'.
 - Add right click mechanic to control other attributes of the planets in the form of a drop-down menu
