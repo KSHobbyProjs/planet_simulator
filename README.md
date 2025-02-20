@@ -4,7 +4,7 @@ Developers: Keanan Scarbro
 
 Version: Alpha 1.0 <br>
 Date: 8/16/2022 <br>
-Updated Date: 2/19/2025
+Updated README Date: 2/19/2025
 
 ___
 ## DESCRIPTION
