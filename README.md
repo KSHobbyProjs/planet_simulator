@@ -23,7 +23,7 @@ Python
   - pandas     (download in your local Python environment with pip via "pip install pandas")
 
 ## HOW TO USE:
-The program is configured with `config.txt`, and the program is run with `main.py`. Data on planet positions and velocities is printed in the form of .dat files into an `output` directory. Restart files are printed as .pkl files into the `restart` directory; these files allow you to start a new simulation from a save point of a previous simulation. 
+The program is configured with `config.txt`, and the program is run with `main.py`. Data on planet positions and velocities over time is printed in the form of .dat files into an `output` directory. Dump files are printed as .pkl files into the `restart` directory; these files allow you to start a new simulation from a save point of a previous simulation. 
 
 ### config.txt
 The config.txt file determines how the program runs. This needs to be configured before running the program. The config.txt file is setup in the following way:
@@ -36,7 +36,7 @@ The config.txt file determines how the program runs. This needs to be configured
   - 'MODE'      : [1: data output only, 2: live simulation only, or 3: data output and live simulation] 
 
 ### main.py
-After configuring the config.txt file, run the program by executing main.py with whichever Python interpreter you choose. The `output` directory will contain the data output from the simulation, and the `restart` directory will contain all dump files.
+After configuring the config.txt file, run the program by executing main.py with whichever Python interpreter you choose.
 
 ### output
 If you chose Mode 1 or Mode 3, the data output files will be printed into the `output` directory. The data files have the form `[NAME]_[OUTPUTNUM]_[PLANETNAME].dat`, where NAME is the name of your simulation as set in the config.txt file, OUTPUTNUM is the number of the output cycle the data corresponds to, and PLANETNAME is the name of the planet that the data corresponds to (example: SolarSim_3_Mercury.dat). The .dat files are structured in columns. The first column gives the number of clock cycles that have passed; the second column gives the time at each cycle; the next three columns give the x, y, and z positions of the planet, respectively; the sixth column gives the planet's radial distance from the origin; the seventh column gives the planet's radial distance from the origin projected onto the x-y plane; and the last column gives the speed of the planet. All data uses meters for position and seconds for time.
