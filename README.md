@@ -10,7 +10,7 @@ ___
 ## DESCRIPTION
 This game is a mock universe sandbox.
 
-It uses Newtonian gravity to simulate the behavior of the planets. There are three modes. In Mode 1, a simulation of the N-body graviation is run with initial planet information that you provide. Data on the positions and velocities of the planets over time is output in the form of plots and data files. Mode 2 is an interactive game. Here, one can create new planets and watch them interact. Mode 3 is a combination of Mode 1 and Mode 2. In Mode 3, the program outputs position and velocity data based on what you did during the live simulation.
+It uses Newtonian gravity to simulate the trajectory of planets given initial conditions. There are three modes. In Mode 1, the program runs a simulation of the planets over time, and data on the positions and velocities of the planets over time is output in the form of plots and data files. Mode 2 is an interactive game. Here, one can create planets and watch them interact. Mode 3 is a combination of Mode 1 and Mode 2. In Mode 3, the program outputs position and velocity data based on what was done during the live simulation.
 ___
 ## HOW TO DOWNLOAD:
 Download with git via "git clone https://github.com/KSHobbyProjs/planet_simulator.git"
