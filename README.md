@@ -30,7 +30,7 @@ The config.txt file determines how the program runs. This needs to be configured
   - 'NAME'      : '[the name of your simulation]',
   - 'RESTART'   : [which dump file, if any, should the program grab its initial data from]
   - 'OUTPUT'    : [how often data is output; e.g. 'OUTPUT' : 300 would output data files every 300 days]
-  - 'DUMP'      : [how often the simulation is saved; e.g. 'DUMP' : 300 would dump simulation data ever 300 days] 
+  - 'DUMP'      : [how often the simulation is saved; e.g. 'DUMP' : 300 would dump simulation state data every 300 days] 
   - 'DURATION'  : [the length of the simulation in days]
   - 'DIMENSION' : [2D or 3D]
   - 'MODE'      : [1: data output only, 2: live simulation only, or 3: data output and live simulation] 
@@ -39,14 +39,12 @@ The config.txt file determines how the program runs. This needs to be configured
 After configuring the config.txt file, run the program by executing main.py with whichever Python interpreter you choose. The `output` directory will contain the data output from the simulation, and the `restart` directory will contain all dump files.
 
 ### output
-If you chose Mode 1 or Mode 3, the data output files will be printed into the `output` directory. The data files have the form `[NAME]_[DUMPNUM]_[PLANETNAME].dat`, where NAME is the name of your simulation as set in the config.txt file, DUMPNUM is the number representing which dump cycle the data corresponds to, and PLANETNAME is the name of the planet that the data corresponds to. The .dat files are structured in columns. The first column gives the number of clock cycles that have passed; the second column gives the time at each cycle; the next three columns give the x, y, and z positions of the planet, respectively; the sixth column gives the planet's radial distance from the origin; the seventh column gives the planet's radial distance from the origin projected onto the x-y plane; and the last column gives the speed of the planet. All data uses meters for position and seconds for time.
+If you chose Mode 1 or Mode 3, the data output files will be printed into the `output` directory. The data files have the form `[NAME]_[OUTPUTNUM]_[PLANETNAME].dat`, where NAME is the name of your simulation as set in the config.txt file, OUTPUTNUM is the number of the output cycle the data corresponds to, and PLANETNAME is the name of the planet that the data corresponds to (example: SolarSim_3_Mercury.dat). The .dat files are structured in columns. The first column gives the number of clock cycles that have passed; the second column gives the time at each cycle; the next three columns give the x, y, and z positions of the planet, respectively; the sixth column gives the planet's radial distance from the origin; the seventh column gives the planet's radial distance from the origin projected onto the x-y plane; and the last column gives the speed of the planet. All data uses meters for position and seconds for time.
 
 The program also prints a `[NAME].hst` file in the `output` directory that includes simulation diagnostic information like when the simulation was started, when output files were printed, when dump files were printed, and when the simulation finished. 
 
 ### restart
-If Mode 1 or Mode 3 were chosen, dump files will be stored in the `restart` directory. These files provide a 
-
-
+If Mode 1 or Mode 3 were chosen, dump files will be stored in the `restart` directory. Dump files contain the simulation state at the time of outputting the dump file. These files have the form `[NAME]_[DUMPCHAR].pkl`, where DUMPCHAR is the tag representing which dump cycle the file belongs to (example: SolarSim_aa.pkl). DUMPCHARs start at 'aa' and move through the alphabet one letter at a time, starting with the first letter. `'RESTART'  : '[DUMPCHAR]'` in the `config.txt` file can then be used to start a new simulation using the simulation state of an old simulation (example: "'RESTART' : ac"). Use `'RESTART' : 'none'` if starting with no dump file.
 
 ___
 IMPORTANT: <br>
