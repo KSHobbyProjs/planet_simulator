@@ -8,7 +8,7 @@
 #
 
 {
-'NAME'          : 'Test',       # Name of simulation
+'NAME'          : 'Initial',       # Name of simulation
 'RESTART'       : 'none',         # Currently not functional      
 'OUTPUT'        : 365,          # Output data files every how many days
 'DUMP'          : 5 * 365,          # Output dump files every how many days
