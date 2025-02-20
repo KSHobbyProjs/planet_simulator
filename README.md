@@ -48,7 +48,6 @@ If Mode 1 or Mode 3 were chosen, and 'DUMP' in the config.txt file was given a ,
 
 
 
-
 ___
 IMPORTANT: <br>
 The game uses real values for the position, velocity, and radius of each planet to calculate the gravity. However, in the live simulation, the position is scaled (by 100 / AU), so that the orbits can fit in the window. The radii of the planets displayed are calculated using an arbitrary formula (_rad_scaling in planet.Planet). This means that the radii of the planets displayed is no where near the true radius (based on the 100 / AU position scaling). The true (position-scaled) radii are actually incredibly small (less than one pixel). This makes sense; the radii of the planets are infinitesmal compared to the orbital distance, afterall. The collision detection is set to trip when a planet enters the fake-radius set by the _rad_scaling function. This can be altered to trip when a planets is within the true (position-scaling) radius by altering the _check_collision method in the planet.Planet class (not recommended). But, this means that the planets will almost never trip the detection function. Instead, the _check_collision function should be altered, so that the collision is tripped at a smaller radius, or the _rad_scaling function should be altered (this affects the displayed size of the planets). Also, a planet is deleted once it leaves the current pygame window, but this can also be changed within _check_collision.
